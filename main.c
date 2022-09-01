@@ -25,11 +25,18 @@ int main(int argc, char *argv[]) {
     printf("Selection Sort\n");
     selection_sort(v, n);
     break;
+  case 4:
+    printf("Merge Sort\n");
+    merge_sort(v, 0, n);
+    break;
   default:
     printf("ERROR: Invalid Sorting Algorythm %d\n", algo);
     return 1;
     break;
   }
+
+  if(n <= 10)
+    print_vector(v, n);
 
   return 0;
 }

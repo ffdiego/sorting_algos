@@ -8,7 +8,8 @@ void swap(int *a, int *b) {
 
 void fill_random_values(int v[], int size){
   srand(time(NULL)); //gets current time as random seed
-  int r = rand() % 100;
+  for(int i = 0; i < size; i++)
+    v[i] = rand() % 100;
 }
 
 void print_vector(int v[], int size){
@@ -55,5 +56,55 @@ void selection_sort(int v[], int size) {
     if(i != min) {
       swap(&v[i], &v[min]);
     }
+  }
+}
+
+void merge(int v[], int comeco, int meio, int fim) {
+  int i = 0;
+
+  int esquerda = comeco;
+  int direita = meio + 1;
+  
+  int size = fim - comeco + 1;
+  int *vAux = calloc(size, sizeof(int));
+
+  while (esquerda <= meio && direita <= fim){
+    if(v[esquerda] < v[direita]) {
+      vAux[i] = v[esquerda];
+      esquerda++;
+    } else {
+      vAux[i] = v[direita];
+      direita++;
+    }
+    i++;
+  }
+
+  while (esquerda <= meio)
+  {
+    vAux[i] = v[esquerda];
+    i++;
+    esquerda++;
+  }
+  while (direita <= fim)
+  {
+    vAux[i] = v[direita];
+    i++;
+    direita++;
+  }
+  for (i = comeco; i <= fim; i++)
+  {
+    v[i] = vAux[i - comeco];
+  }
+  
+  free(vAux);
+}
+
+void merge_sort(int v[], int start, int end) {
+  if (start < end) {
+    int mid = (start + end) / 2;
+
+    merge_sort(v, start, mid);
+    merge_sort(v, mid+1, end);
+    merge(v, start, mid, end);
   }
 }
