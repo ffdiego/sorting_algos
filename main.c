@@ -2,9 +2,14 @@
 #include "sorting.h"
 
 int main(int argc, char *argv[]) {
+  if(argc != 3) {
+    printf("Usage:\n\tsorter SAMPLE_SIZE ALGORYTHM\n");
+    return 0;
+  }
+
   unsigned int n = atoi(argv[1]);
   unsigned int algo = atoi(argv[2]);
- 
+
   printf("| size: %d | algo: %d |\n", n, algo);
   
 
