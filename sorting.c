@@ -108,3 +108,30 @@ void merge_sort(int v[], int start, int end) {
     merge(v, start, mid, end);
   }
 }
+
+void quick_sort(int v[], int start, int end) {
+  int i = start;
+  int j = end;
+  int pivot, aux;
+
+  pivot = v[(i+j)/2];
+
+  while (i <= j) {
+    while(v[i] < pivot)
+      i++;
+    
+    while (v[j] > pivot)
+      j--;
+
+    if (i <= j) {
+      swap(&v[i], &v[j]);
+      i++;
+      j--;
+    }
+  }
+
+  if (start < j)
+    quick_sort(v, start, j);
+  if (i < end)
+    quick_sort(v, i, end);
+}

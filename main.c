@@ -10,8 +10,8 @@ int main(int argc, char *argv[]) {
   unsigned int n = atoi(argv[1]);
   unsigned int algo = atoi(argv[2]);
 
-  printf("| size: %d | algo: %d |\n", n, algo);
-  
+  printf("| size: %d | algo: ", n);
+
 
   int *v = calloc(n, sizeof(int)); 
   fill_random_values(v, n);
@@ -32,6 +32,10 @@ int main(int argc, char *argv[]) {
     break;
   case 4:
     printf("Merge Sort\n");
+    merge_sort(v, 0, n);
+    break;
+  case 5:
+    printf("Quick Sort\n");
     merge_sort(v, 0, n);
     break;
   default:
