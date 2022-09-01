@@ -53,9 +53,7 @@ void selection_sort(int v[], int size) {
         min = j;
     
     if(i != min) {
-      aux = v[i];
-      v[i] = v[min];
-      v[min] = aux;
+      swap(&v[i], &v[min]);
     }
   }
 }
